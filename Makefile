@@ -36,7 +36,7 @@ CONFIG_SDIO_HCI = n
 CONFIG_GSPI_HCI = n
 
 CONFIG_MP_INCLUDED = y
-CONFIG_POWER_SAVING = y
+CONFIG_POWER_SAVING = n
 CONFIG_USB_AUTOSUSPEND = n
 CONFIG_HW_PWRP_DETECTION = n
 CONFIG_WIFI_TEST = n
@@ -743,8 +743,8 @@ ifeq ($(CONFIG_PLATFORM_ARM_RPI_CC), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 ARCH := arm
 CROSS_COMPILE := arm-linux-gnueabihf-
-KVER  := 3.18.13-v7+
-KSRC ?= $(HOME)/rpi/modules-3.18.y/lib/modules/$(KVER)/build
+KVER  := 3.12.36+
+KSRC ?= $(HOME)/rpi/modules-3.12.y/lib/modules/$(KVER)/build
 MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
 
