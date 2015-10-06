@@ -1213,7 +1213,7 @@ unsigned int OnBeacon(_adapter *padapter, union recv_frame *precv_frame)
 
 				ret = rtw_check_bcn_info(padapter, pframe, len);
 				if (!ret) {
-						DBG_871X_LEVEL(_drv_always_, "ap has changed, disconnect now\n ");
+						DBG_871X_LEVEL(_drv_info_, "ap has changed, disconnect now\n ");
 						receive_disconnect(padapter, pmlmeinfo->network.MacAddress , 65535);
 						return _SUCCESS;
 				}
@@ -1645,7 +1645,7 @@ unsigned int OnAuthClient(_adapter *padapter, union recv_frame *precv_frame)
 
 	if (go2asoc)
 	{
-		DBG_871X_LEVEL(_drv_always_, "auth success, start assoc\n");
+		DBG_871X_LEVEL(_drv_info_, "auth success, start assoc\n");
 		start_clnt_assoc(padapter);
 		return _SUCCESS;
 	}
@@ -9675,7 +9675,7 @@ void start_clnt_auth(_adapter* padapter)
 	issue_deauth(padapter, (&(pmlmeinfo->network))->MacAddress, WLAN_REASON_DEAUTH_LEAVING);
 #endif
 
-	DBG_871X_LEVEL(_drv_always_, "start auth\n");
+	DBG_871X_LEVEL(_drv_info_, "start auth\n");
 	issue_auth(padapter, NULL, 0);
 
 	set_link_timer(pmlmeext, REAUTH_TO);
@@ -11748,7 +11748,7 @@ u8 setkey_hdl(_adapter *padapter, u8 *pbuf)
 	//write cam
 	ctrl = BIT(15) | ((pparm->algorithm) << 2) | pparm->keyid;	
 
-	DBG_871X_LEVEL(_drv_always_, "set group key to hw: alg:%d(WEP40-1 WEP104-5 TKIP-2 AES-4) "
+	DBG_871X_LEVEL(_drv_info_, "set group key to hw: alg:%d(WEP40-1 WEP104-5 TKIP-2 AES-4) "
 			"keyid:%d\n", pparm->algorithm, pparm->keyid);
 	write_cam(padapter, pparm->keyid, ctrl, null_sta, pparm->key);
 	
@@ -11857,7 +11857,7 @@ u8 set_stakey_hdl(_adapter *padapter, u8 *pbuf)
 
 exit_set_stakey_hdl:
 
-	DBG_871X_LEVEL(_drv_always_, "set pairwise key to hw: alg:%d(WEP40-1 WEP104-5 TKIP-2 AES-4) camid:%d\n",
+	DBG_871X_LEVEL(_drv_info_, "set pairwise key to hw: alg:%d(WEP40-1 WEP104-5 TKIP-2 AES-4) camid:%d\n",
 		       	pparm->algorithm, cam_id);
 
 	return ret;

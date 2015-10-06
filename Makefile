@@ -743,8 +743,8 @@ ifeq ($(CONFIG_PLATFORM_ARM_RPI_CC), y)
 EXTRA_CFLAGS += -DCONFIG_LITTLE_ENDIAN
 ARCH := arm
 CROSS_COMPILE := arm-linux-gnueabihf-
-KVER  := 3.18.13-v7+
-KSRC ?= $(HOME)/rpi/modules-3.18.y/lib/modules/$(KVER)/build
+KVER  := $(KERNEL_VER)-v7+
+KSRC ?= $(HOME)/dev/rasp/modules-$(KERNEL_VER)/lib/modules/$(KVER)/build
 MODDESTDIR := /lib/modules/$(KVER)/kernel/drivers/net/wireless/
 endif
 
