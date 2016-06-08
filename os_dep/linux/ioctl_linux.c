@@ -238,7 +238,7 @@ void rtw_indicate_wx_assoc_event(_adapter *padapter)
 	
 	_rtw_memcpy(wrqu.ap_addr.sa_data, pmlmepriv->cur_network.network.MacAddress, ETH_ALEN);
 	DBG_871X("BSSID:" MAC_FMT "\n", MAC_ARG(pmlmepriv->cur_network.network.MacAddress));
-	DBG_871X_LEVEL(_drv_always_, "assoc success\n");
+	DBG_871X_LEVEL(_drv_info_, "assoc success\n");
 #ifndef CONFIG_IOCTL_CFG80211
 	wireless_send_event(padapter->pnetdev, SIOCGIWAP, &wrqu, NULL);
 #endif
@@ -254,7 +254,7 @@ void rtw_indicate_wx_disassoc_event(_adapter *padapter)
 	_rtw_memset(wrqu.ap_addr.sa_data, 0, ETH_ALEN);
 
 #ifndef CONFIG_IOCTL_CFG80211
-	DBG_871X_LEVEL(_drv_always_, "indicate disassoc\n");
+	DBG_871X_LEVEL(_drv_info_, "indicate disassoc\n");
 	wireless_send_event(padapter->pnetdev, SIOCGIWAP, &wrqu, NULL);
 #endif
 }
